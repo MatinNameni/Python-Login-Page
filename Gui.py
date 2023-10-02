@@ -1,7 +1,6 @@
 import customtkinter as ctk
-from CTkMessagebox import CTkMessagebox
-from commands import *
 import tkinter as tk
+from commands import *
 
 class LoginPage:
     def __init__(self):
@@ -47,19 +46,15 @@ class LoginPage:
         password = self.password_entry.get()
 
         if ' ' in username or ' ' in password:
-            #CTkMessagebox(title="Error", message="You can't use space for username or password", icon="cancel", option_1="OK")
             tk.messagebox.showerror(title="Error", message="You can't use space for username or password")
         elif username == '' or password == '':
-            #CTkMessagebox(title="Error", message="Please enter all required information", icon="cancel", option_1="OK")
             tk.messagebox.showerror(title="Error", message="Please enter all required information")        
         else:
             user = User(username, password)
             state = user.login_status()
             if state == 1:
-                #CTkMessagebox(message='You have successfully logged in', icon='check', option_1='OK')
                 tk.messagebox.showinfo(message="You have successfully logged in")
             else:
-                #CTkMessagebox(title="Error", message="Wrong username or password", icon="cancel", option_1="OK")            tk.messagebox.showerror(title="Error", message="Please enter all required information", option_1="OK")        
                 tk.messagebox.showerror(title="Error", message="Wrong username or password")        
 
     def lunch_signup_page(self, event):
@@ -126,18 +121,14 @@ class SignUpPage:
         re_password = self.retype_password_entry.get()
 
         if ' ' in username or ' ' in password or ' ' in re_password:
-            #CTkMessagebox(title="Error", message="You can't use space for username or password", icon="cancel", option_1="OK")
             tk.messagebox.showerror(title="Error", message="You can't use space for username or password")
         elif username == '' or password == '' or re_password == '':
-            #CTkMessagebox(title="Error", message="Please fill all required information", icon="cancel", option_1="OK")
             tk.messagebox.showerror(title="Error", message="Please fill all required information")
         elif password != re_password:
-            #CTkMessagebox(title="Error", message="Password and Retype password are not the same", icon="cancel", option_1="OK")
             tk.messagebox.showerror(title="Error", message="Password and Retype password are not the same")
         else:
             user = User(username, password)
             if user.signup() != 0:
-                #CTkMessagebox(message='account created! you can login now', icon='check', option_1='OK')
                 tk.messagebox.showinfo(message='account created! you can login now')
                 
 
