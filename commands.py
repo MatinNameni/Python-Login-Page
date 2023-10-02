@@ -1,5 +1,4 @@
 import os
-from CTkMessagebox import CTkMessagebox
 import tkinter as tk
 
 class File:
@@ -39,7 +38,6 @@ class User:
     def signup(self):
         for i in File.load():
             if i['username'] == self.username:
-                #CTkMessagebox(title="Error", message="This username already exists", icon="cancel", option_1="OK")
                 tk.messagebox.showerror(title="Error", message="This username already exists")
                 return 0
         self.add_user()
